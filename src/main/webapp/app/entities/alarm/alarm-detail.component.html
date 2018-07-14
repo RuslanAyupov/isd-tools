@@ -1,0 +1,95 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="alarm">
+            <h2><span jhiTranslate="isdtoolsApp.alarm.detail.title">Alarm</span> {{alarm.id}}</h2>
+            <hr>
+            <isd-alert-error></isd-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="isdtoolsApp.alarm.appl">Appl</span></dt>
+                <dd>
+                    <span>{{alarm.appl}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.bfunc">Bfunc</span></dt>
+                <dd>
+                    <span>{{alarm.bfunc}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.chgj">Chgj</span></dt>
+                <dd>
+                    <span>{{alarm.chgj}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.ci">Ci</span></dt>
+                <dd>
+                    <span>{{alarm.ci}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.desc">Desc</span></dt>
+                <dd>
+                    <span>{{alarm.desc}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.email">Email</span></dt>
+                <dd>
+                    <span>{{alarm.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.fmail">Fmail</span></dt>
+                <dd>
+                    <span>{{alarm.fmail}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.fsms">Fsms</span></dt>
+                <dd>
+                    <span>{{alarm.fsms}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.ftlg">Ftlg</span></dt>
+                <dd>
+                    <span>{{alarm.ftlg}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.hpsm">Hpsm</span></dt>
+                <dd>
+                    <span>{{alarm.hpsm}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.infrastructure">Infrastructure</span></dt>
+                <dd>
+                    <span>{{alarm.infrastructure}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.messtext">Messtext</span></dt>
+                <dd>
+                    <span>{{alarm.messtext}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.sitname">Sitname</span></dt>
+                <dd>
+                    <span>{{alarm.sitname}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.sittype">Sittype</span></dt>
+                <dd>
+                    <span>{{alarm.sittype}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.sms">Sms</span></dt>
+                <dd>
+                    <span>{{alarm.sms}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.tlg">Tlg</span></dt>
+                <dd>
+                    <span>{{alarm.tlg}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.url">Url</span></dt>
+                <dd>
+                    <span>{{alarm.url}}</span>
+                </dd>
+                <dt><span jhiTranslate="isdtoolsApp.alarm.hpsm_override">Hpsm Override</span></dt>
+                <dd>
+                    <span>{{alarm.hpsm_override}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/alarm', alarm.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

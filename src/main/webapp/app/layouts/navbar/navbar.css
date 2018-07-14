@@ -20,13 +20,7 @@ Navbar
     border-right: unset;
     color: white;
 }
-.modal-header .close {
-    padding: 1rem;
-    margin: -1rem -1rem -1rem auto;
-    color: white;
-    text-shadow: unset;
-    opacity: unset;
-}
+
 .navbar-dark .navbar-brand {
     font-weight: 200;
     font-size: 24px;

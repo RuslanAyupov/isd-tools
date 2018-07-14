@@ -1,0 +1,39 @@
+
+{
+    "isdtoolsApp": {
+        "alarm" : {
+            "home": {
+                "title": "Alarms",
+                "createLabel": "Создать новый Alarm",
+                "createOrEditLabel": "Создать или отредактировать Alarm"
+            },
+            "created": "Новый Alarm создан с идентификатором {{ param }}",
+            "updated": "Alarm обновлен с идентификатором {{ param }}",
+            "deleted": "Alarm удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Alarm {{ id }}?"
+            },
+            "detail": {
+                "title": "Alarm"
+            },
+            "appl": "Appl",
+            "bfunc": "Bfunc",
+            "chgj": "Chgj",
+            "ci": "Ci",
+            "desc": "Desc",
+            "email": "Email",
+            "fmail": "Fmail",
+            "fsms": "Fsms",
+            "ftlg": "Ftlg",
+            "hpsm": "Hpsm",
+            "infrastructure": "Infrastructure",
+            "messtext": "Messtext",
+            "sitname": "Sitname",
+            "sittype": "Sittype",
+            "sms": "Sms",
+            "tlg": "Tlg",
+            "url": "Url",
+            "hpsm_override": "Hpsm Override"
+        }
+    }
+}

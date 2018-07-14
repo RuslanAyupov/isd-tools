@@ -1,0 +1,126 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="isd-alarm-heading" jhiTranslate="isdtoolsApp.alarm.home.createOrEditLabel">Create or edit a Alarm</h2>
+            <div>
+                <isd-alert-error></isd-alert-error>
+                <div class="form-group" [hidden]="!alarm.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="alarm.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.appl" for="field_appl">Appl</label>
+                    <input type="text" class="form-control" name="appl" id="field_appl"
+                        [(ngModel)]="alarm.appl" required/>
+                    <div [hidden]="!(editForm.controls.appl?.dirty && editForm.controls.appl?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.appl?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.bfunc" for="field_bfunc">Bfunc</label>
+                    <input type="text" class="form-control" name="bfunc" id="field_bfunc"
+                        [(ngModel)]="alarm.bfunc" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.chgj" for="field_chgj">Chgj</label>
+                    <input type="text" class="form-control" name="chgj" id="field_chgj"
+                        [(ngModel)]="alarm.chgj" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.ci" for="field_ci">Ci</label>
+                    <input type="text" class="form-control" name="ci" id="field_ci"
+                        [(ngModel)]="alarm.ci" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.desc" for="field_desc">Desc</label>
+                    <input type="text" class="form-control" name="desc" id="field_desc"
+                        [(ngModel)]="alarm.desc" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                        [(ngModel)]="alarm.email" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.fmail" for="field_fmail">Fmail</label>
+                    <input type="text" class="form-control" name="fmail" id="field_fmail"
+                        [(ngModel)]="alarm.fmail" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.fsms" for="field_fsms">Fsms</label>
+                    <input type="text" class="form-control" name="fsms" id="field_fsms"
+                        [(ngModel)]="alarm.fsms" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.ftlg" for="field_ftlg">Ftlg</label>
+                    <input type="text" class="form-control" name="ftlg" id="field_ftlg"
+                        [(ngModel)]="alarm.ftlg" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.hpsm" for="field_hpsm">Hpsm</label>
+                    <input type="text" class="form-control" name="hpsm" id="field_hpsm"
+                        [(ngModel)]="alarm.hpsm" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.infrastructure" for="field_infrastructure">Infrastructure</label>
+                    <input type="text" class="form-control" name="infrastructure" id="field_infrastructure"
+                        [(ngModel)]="alarm.infrastructure" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.messtext" for="field_messtext">Messtext</label>
+                    <input type="text" class="form-control" name="messtext" id="field_messtext"
+                        [(ngModel)]="alarm.messtext" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.sitname" for="field_sitname">Sitname</label>
+                    <input type="text" class="form-control" name="sitname" id="field_sitname"
+                        [(ngModel)]="alarm.sitname" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.sittype" for="field_sittype">Sittype</label>
+                    <input type="text" class="form-control" name="sittype" id="field_sittype"
+                        [(ngModel)]="alarm.sittype" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.sms" for="field_sms">Sms</label>
+                    <input type="text" class="form-control" name="sms" id="field_sms"
+                        [(ngModel)]="alarm.sms" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.tlg" for="field_tlg">Tlg</label>
+                    <input type="text" class="form-control" name="tlg" id="field_tlg"
+                        [(ngModel)]="alarm.tlg" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.url" for="field_url">Url</label>
+                    <input type="text" class="form-control" name="url" id="field_url"
+                        [(ngModel)]="alarm.url" required/>
+                    <div [hidden]="!(editForm.controls.url?.dirty && editForm.controls.url?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.url?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="isdtoolsApp.alarm.hpsm_override" for="field_hpsm_override">Hpsm Override</label>
+                    <input type="text" class="form-control" name="hpsm_override" id="field_hpsm_override"
+                        [(ngModel)]="alarm.hpsm_override" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

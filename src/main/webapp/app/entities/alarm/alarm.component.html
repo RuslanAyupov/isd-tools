@@ -1,0 +1,96 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="isdtoolsApp.alarm.home.title">Alarms</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-alarm" [routerLink]="['/alarm/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="isdtoolsApp.alarm.home.createLabel">
+            Create new Alarm
+            </span>
+        </button>
+    </h2>
+    <isd-alert></isd-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="alarms">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="appl"><span jhiTranslate="isdtoolsApp.alarm.appl">Appl</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="bfunc"><span jhiTranslate="isdtoolsApp.alarm.bfunc">Bfunc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="chgj"><span jhiTranslate="isdtoolsApp.alarm.chgj">Chgj</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="ci"><span jhiTranslate="isdtoolsApp.alarm.ci">Ci</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="desc"><span jhiTranslate="isdtoolsApp.alarm.desc">Desc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="email"><span jhiTranslate="isdtoolsApp.alarm.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fmail"><span jhiTranslate="isdtoolsApp.alarm.fmail">Fmail</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fsms"><span jhiTranslate="isdtoolsApp.alarm.fsms">Fsms</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="ftlg"><span jhiTranslate="isdtoolsApp.alarm.ftlg">Ftlg</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="hpsm"><span jhiTranslate="isdtoolsApp.alarm.hpsm">Hpsm</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="infrastructure"><span jhiTranslate="isdtoolsApp.alarm.infrastructure">Infrastructure</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="messtext"><span jhiTranslate="isdtoolsApp.alarm.messtext">Messtext</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sitname"><span jhiTranslate="isdtoolsApp.alarm.sitname">Sitname</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sittype"><span jhiTranslate="isdtoolsApp.alarm.sittype">Sittype</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sms"><span jhiTranslate="isdtoolsApp.alarm.sms">Sms</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tlg"><span jhiTranslate="isdtoolsApp.alarm.tlg">Tlg</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="url"><span jhiTranslate="isdtoolsApp.alarm.url">Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="hpsm_override"><span jhiTranslate="isdtoolsApp.alarm.hpsm_override">Hpsm Override</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let alarm of alarms ;trackBy: trackId">
+                <td><a [routerLink]="['/alarm', alarm.id, 'view' ]">{{alarm.id}}</a></td>
+                <td>{{alarm.appl}}</td>
+                <td>{{alarm.bfunc}}</td>
+                <td>{{alarm.chgj}}</td>
+                <td>{{alarm.ci}}</td>
+                <td>{{alarm.desc}}</td>
+                <td>{{alarm.email}}</td>
+                <td>{{alarm.fmail}}</td>
+                <td>{{alarm.fsms}}</td>
+                <td>{{alarm.ftlg}}</td>
+                <td>{{alarm.hpsm}}</td>
+                <td>{{alarm.infrastructure}}</td>
+                <td>{{alarm.messtext}}</td>
+                <td>{{alarm.sitname}}</td>
+                <td>{{alarm.sittype}}</td>
+                <td>{{alarm.sms}}</td>
+                <td>{{alarm.tlg}}</td>
+                <td>{{alarm.url}}</td>
+                <td>{{alarm.hpsm_override}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/alarm', alarm.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/alarm', alarm.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'alarm/'+ alarm.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="alarms && alarms.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "appl",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "bfunc",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "chgj",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ci",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "desc",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fmail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fsms",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ftlg",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hpsm",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "infrastructure",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "messtext",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sitname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sittype",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sms",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tlg",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "hpsm_override",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180710232551",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "alarm",
+    "jpaMetamodelFiltering": true,
+    "pagination": "pagination"
+}

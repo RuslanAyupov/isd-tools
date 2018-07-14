@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Alarm.
+    -->
+    <changeSet id="20180710232551-1" author="jhipster">
+        <createTable tableName="alarm">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="appl" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="bfunc" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="chgj" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ci" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="isd_desc" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="email" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="fmail" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="fsms" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ftlg" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="hpsm" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="infrastructure" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="messtext" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sitname" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sittype" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sms" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="tlg" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="hpsm_override" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>
