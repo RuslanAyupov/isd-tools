@@ -1,0 +1,21 @@
+
+{
+    "isdtoolsApp": {
+        "isdcalc" : {
+            "home": {
+                "title": "Isdcalcs",
+                "createLabel": "Создать новый Isdcalc",
+                "createOrEditLabel": "Создать или отредактировать Isdcalc"
+            },
+            "created": "Новый Isdcalc создан с идентификатором {{ param }}",
+            "updated": "Isdcalc обновлен с идентификатором {{ param }}",
+            "deleted": "Isdcalc удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Isdcalc {{ id }}?"
+            },
+            "detail": {
+                "title": "Isdcalc"
+            }
+        }
+    }
+}

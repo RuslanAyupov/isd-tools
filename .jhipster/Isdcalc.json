@@ -1,0 +1,13 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [],
+    "changelogDate": "20180714192731",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "isdcalc",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}
