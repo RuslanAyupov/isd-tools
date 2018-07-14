@@ -25,6 +25,10 @@ Navbar
     font-weight: 200;
     font-size: 24px;
 }
+.jh-navbar .nav-link {
+    font-weight: 400;
+    background: unset;
+}
 
 .jh-navbar {
     background-color: #1a1d20;
