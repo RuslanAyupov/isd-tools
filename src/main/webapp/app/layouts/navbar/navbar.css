@@ -5,14 +5,35 @@ Navbar
     font-size: 11px;
     color: #ccc;
 }
-
+.navbar-brand {
+    border-right: unset;
+}
+.navbar .nav-link {
+    padding: 1rem;
+    border-left: unset;
+    border-right: unset;
+    color: rgba(255,255,255,0.5);
+}
+.navbar .nav-link:hover {
+    padding: 1rem;
+    border-left: unset;
+    border-right: unset;
+    color: white;
+}
+.modal-header .close {
+    padding: 1rem;
+    margin: -1rem -1rem -1rem auto;
+    color: white;
+    text-shadow: unset;
+    opacity: unset;
+}
 .navbar-dark .navbar-brand {
     font-weight: 200;
     font-size: 24px;
 }
 
 .jh-navbar {
-    background-color: #353d47;
+    background-color: #1a1d20;
     padding: 0.2em 1em;
 }
 
@@ -77,6 +98,7 @@ Logo styles
 ========================================================================== */
 .navbar-brand.logo {
     padding: 5px 15px;
+    border-right: unset;
 }
 
 .logo .logo-img {
