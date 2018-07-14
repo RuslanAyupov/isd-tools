@@ -1,7 +1,100 @@
-# isdtools
-This application was generated using JHipster 5.1.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.1.0](https://www.jhipster.tech/documentation-archive/v5.1.0).
+### ISD Tool WebApp
+Web Application with usefull tools set, such as :
 
-## Development
+###### ISD WebCalc
+> Solution cost estimation tool (WIP)
+
+###### Alarms Management:
+> This application developed for manage Tivoli alarms triggers and syncronize they with Confluence wiki.
+> 
+> https://confluence.intranet/
+
+#### Changelog:
+
+- v0.0.1 (initial version)
+    - developed mvc (spring framework)
+    - implemented security basic roles management (spring security)
+    
+
+
+#### Pre-requirements
+
++ PostgreSQL 9.x
++ NodeJS 8.x (LTS)
++ NPM / Angular CLI / WebPack / YO
++ Maven 3.x
+
+#### Database preparation
+
++ Create DB:
+
+```sql
+-- Users
+CREATE ROLE alarmsdba WITH LOGIN PASSWORD 'passw0rd';
+ALTER ROLE alarmsdba CREATEDB;
+
+-- Database
+CREATE DATABASE alarms;
+GRANT ALL PRIVILEGES ON DATABASE alarms TO alarmsdba
+```
+
++ Create Tables and Set default scheme
+
+```sql
+-- Grant Permissions
+ALTER DATABASE alarms SET search_path TO public;
+ALTER ROLE alarmsdba SET search_path TO public;
+
+-- Table prepare
+CREATE TABLE ALARM
+(
+    id serial primary key,
+    SITNAME VARCHAR(1024) not null,
+	APPL VARCHAR(512),
+	MESSTEXT VARCHAR(1024),
+	"DESC" VARCHAR(512),
+	HPSM VARCHAR(512),
+	BFUNC VARCHAR(512),
+	EMAIL VARCHAR(512),
+	CI VARCHAR(512),
+	INFRASTRUCTURE VARCHAR(512),
+	SMS VARCHAR(512),
+	FMAIL VARCHAR(512),
+	FSMS VARCHAR(512),
+	SITTYPE VARCHAR(512) not null,
+	FTLG VARCHAR(512),
+	TLG VARCHAR(512),
+	CHGJ VARCHAR(512),
+    URL VARCHAR(1024)
+);
+```
+
++ Filter queries:
+
+```sql
+-- Show total records
+select count(*) from "PUBLIC".alarm;
+
+-- Select deployed pages
+select chgj, appl, bfunc, email, sms, tlg, url from "PUBLIC".alarm where url is not null;
+
+-- Select pages to deploy
+select chgj, appl, bfunc, email, sms, tlg, url from "PUBLIC".alarmwhere url is null;
+
+-- Update
+UPDATE "PUBLIC".alarm
+SET CHGJ='16.03.2017 Evgrashin. SWIFT Message Partner Closed', APPL='SWIFT', BFUNC='SWIFT communication', EMAIL='ASO_SWIFT@unicredit.ru', SMS='+79636554090', TLG='ASO_Corporate ASO_SWIFT', URL='';
+
+-- Update custom Alarm URL row to NULL values
+UPDATE "OMNIUSER".tezstsit
+SET url = 'https://confluence-stage.intranet/pages/viewpage.action?pageId=99975264'
+where id = 1;
+
+-- Show version
+select version();
+```
+
+#### Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
 
@@ -27,7 +120,7 @@ Add the `help` flag on any command to see how you can use it. For example, `npm 
 
 The `npm run` command will list all of the scripts available to run for this project.
 
-### Service workers
+##### Service workers
 
 Service workers are commented by default, to enable them please uncomment the following code.
 
@@ -45,7 +138,7 @@ Service workers are commented by default, to enable them please uncomment the fo
 
 Note: workbox creates the respective service worker and dynamically generate the `service-worker.js`
 
-### Managing dependencies
+##### Managing dependencies
 
 For example, to add [Leaflet][] library as a runtime dependency of your application, you would run following command:
 
@@ -56,37 +149,26 @@ To benefit from TypeScript type definitions from [DefinitelyTyped][] repository 
     npm install --save-dev --save-exact @types/leaflet
 
 Then you would import the JS and CSS files specified in library's installation instructions so that [Webpack][] knows about them:
-Edit [src/main/webapp/app/vendor.ts](src/main/webapp/app/vendor.ts) file:
-~~~
-import 'leaflet/dist/leaflet.js';
-~~~
-
-Edit [src/main/webapp/content/css/vendor.css](src/main/webapp/content/css/vendor.css) file:
-~~~
-@import '~leaflet/dist/leaflet.css';
-~~~
 Note: there are still few other things remaining to do for Leaflet that we won't detail here.
 
 For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
 
-### Using angular-cli
 
-You can also use [Angular CLI][] to generate some custom client code.
+##### Doing API-First development using openapi-generator
 
-For example, the following command:
+[OpenAPI-Generator]() is configured for this application. You can generate API code from the `src/main/resources/swagger/api.yml` definition file by running:
+```bash
+./mvnw generate-sources
+```
+Then implements the generated delegate classes with `@Service` classes.
 
-    ng generate component my-component
+To edit the `api.yml` definition file, you can use a tool such as [Swagger-Editor](). Start a local instance of the swagger-editor using docker by running: `docker-compose -f src/main/docker/swagger-editor.yml up -d`. The editor will then be reachable at [http://localhost:7742](http://localhost:7742).
 
-will generate few files:
+Refer to [Doing API-First development][] for more details.
 
-    create src/main/webapp/app/my-component/my-component.component.html
-    create src/main/webapp/app/my-component/my-component.component.ts
-    update src/main/webapp/app/app.module.ts
+#### Building for production
 
-
-## Building for production
-
-To optimize the isdtools application for production, run:
+To optimize the AlarmsWebApp application for production, run:
 
     ./mvnw -Pprod clean package
 
@@ -99,66 +181,18 @@ Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
 
 Refer to [Using JHipster in production][] for more details.
 
-## Testing
+#### Testing
 
 To launch your application's tests, run:
 
     ./mvnw clean test
 
-### Client tests
+##### Client tests
 
 Unit tests are run by [Jest][] and written with [Jasmine][]. They're located in [src/test/javascript/](src/test/javascript/) and can be run with:
 
     npm test
 
-
-
-For more information, refer to the [Running tests page][].
-
-## Using Docker to simplify development (optional)
-
-You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
-
-For example, to start a postgresql database in a docker container, run:
-
-    docker-compose -f src/main/docker/postgresql.yml up -d
-
-To stop it and remove the container, run:
-
-    docker-compose -f src/main/docker/postgresql.yml down
-
-You can also fully dockerize your application and all the services that it depends on.
-To achieve this, first build a docker image of your app by running:
-
-    ./mvnw verify -Pprod dockerfile:build dockerfile:tag@version dockerfile:tag@commit
-
-Then run:
-
-    docker-compose -f src/main/docker/app.yml up -d
-
-For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`jhipster docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
-
-## Continuous Integration (optional)
+#### Continuous Integration (optional)
 
 To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
-
-[JHipster Homepage and latest documentation]: https://www.jhipster.tech
-[JHipster 5.1.0 archive]: https://www.jhipster.tech/documentation-archive/v5.1.0
-
-[Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v5.1.0/development/
-[Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v5.1.0/docker-compose
-[Using JHipster in production]: https://www.jhipster.tech/documentation-archive/v5.1.0/production/
-[Running tests page]: https://www.jhipster.tech/documentation-archive/v5.1.0/running-tests/
-[Setting up Continuous Integration]: https://www.jhipster.tech/documentation-archive/v5.1.0/setting-up-ci/
-
-
-[Node.js]: https://nodejs.org/
-[Yarn]: https://yarnpkg.org/
-[Webpack]: https://webpack.github.io/
-[Angular CLI]: https://cli.angular.io/
-[BrowserSync]: http://www.browsersync.io/
-[Jest]: https://facebook.github.io/jest/
-[Jasmine]: http://jasmine.github.io/2.0/introduction.html
-[Protractor]: https://angular.github.io/protractor/
-[Leaflet]: http://leafletjs.com/
-[DefinitelyTyped]: http://definitelytyped.org/

@@ -1,12 +1,12 @@
 {
     "global": {
-        "title": "Isdtools",
+        "title": "ISD Tools",
         "browsehappy": "Ваш браузер <strong>устарел</strong>. Пожалуйста <a href=\"http://browsehappy.com/?locale=ru\">обновите ваш браузер</a>.",
         "menu": {
             "home": "Главная",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "Сущности",
+                "main": "Приложения",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -131,5 +131,5 @@
         "idexists": "Новый {{entityName}} не может иметь данный ID",
         "idnull": "Неверный ID"
     },
-    "footer": "Это ваш футтер"
+    "footer": "Сделано с любовью ДИТ"
 }

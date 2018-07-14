@@ -6,7 +6,7 @@
     <artifactId>isdtools</artifactId>
     <version>0.0.1</version>
     <packaging>war</packaging>
-    <name>Isdtools</name>
+    <name>ISD Tools</name>
 
     <repositories>
         <!-- jhipster-needle-maven-repository -->
