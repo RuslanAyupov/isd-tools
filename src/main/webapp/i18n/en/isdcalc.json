@@ -3,18 +3,18 @@
     "isdtoolsApp": {
         "isdcalc" : {
             "home": {
-                "title": "Isdcalcs",
-                "createLabel": "Create a new Isdcalc",
-                "createOrEditLabel": "Create or edit a Isdcalc"
+                "title": "ISD Calc",
+                "createLabel": "Add new position to catalog",
+                "createOrEditLabel": "Create or edit a catalog"
             },
-            "created": "A new Isdcalc is created with identifier {{ param }}",
-            "updated": "A Isdcalc is updated with identifier {{ param }}",
-            "deleted": "A Isdcalc is deleted with identifier {{ param }}",
+            "created": "A new position is created with identifier {{ param }}",
+            "updated": "A position is updated with identifier {{ param }}",
+            "deleted": "A position is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Isdcalc {{ id }}?"
+                "question": "Are you sure you want to delete positii=on {{ id }}?"
             },
             "detail": {
-                "title": "Isdcalc"
+                "title": "ISD Calc"
             }
         }
     }

@@ -12,10 +12,15 @@ Web Application with usefull tools set, such as :
 #### Changelog:
 
 - v0.0.1 (initial version)
-    - developed mvc (spring framework)
-    - implemented security basic roles management (spring security)
-    
-
+    - developed mvc (spring framework);
+    - implemented security basic roles management (spring security);
+- v0.0.2 (wip)
+    - implement auditing service;
+    - package with spring boot;
+- v0.0.3 (wip)
+    - added universal entity generation;
+    - added alarms management entity and UI;
+    - trying refactoring UI with clarity;      
 
 #### Pre-requirements
 
@@ -82,11 +87,11 @@ select chgj, appl, bfunc, email, sms, tlg, url from "PUBLIC".alarm where url is 
 select chgj, appl, bfunc, email, sms, tlg, url from "PUBLIC".alarmwhere url is null;
 
 -- Update
-UPDATE "PUBLIC".alarm
+UPDATE "public".alarm
 SET CHGJ='16.03.2017 Evgrashin. SWIFT Message Partner Closed', APPL='SWIFT', BFUNC='SWIFT communication', EMAIL='ASO_SWIFT@unicredit.ru', SMS='+79636554090', TLG='ASO_Corporate ASO_SWIFT', URL='';
 
 -- Update custom Alarm URL row to NULL values
-UPDATE "OMNIUSER".tezstsit
+UPDATE "public".tezstsit
 SET url = 'https://confluence-stage.intranet/pages/viewpage.action?pageId=99975264'
 where id = 1;
 
@@ -179,7 +184,7 @@ To ensure everything worked, run:
 
 Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
 
-Refer to [Using JHipster in production][] for more details.
+Refer to [Using ISD Tools in production][] for more details.
 
 #### Testing
 

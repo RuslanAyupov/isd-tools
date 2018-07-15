@@ -7,8 +7,8 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Applicaitons",
-                "alarm": "Alarm",
-                "isdcalc": "Isdcalc",
+                "alarm": "Alarms management",
+                "isdcalc": "ISD caclulator",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

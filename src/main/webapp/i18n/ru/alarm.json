@@ -3,18 +3,18 @@
     "isdtoolsApp": {
         "alarm" : {
             "home": {
-                "title": "Alarms",
-                "createLabel": "Создать новый Alarm",
-                "createOrEditLabel": "Создать или отредактировать Alarm"
+                "title": "Управление записями",
+                "createLabel": "Создать новую запись",
+                "createOrEditLabel": "Создать или отредактировать запись"
             },
-            "created": "Новый Alarm создан с идентификатором {{ param }}",
-            "updated": "Alarm обновлен с идентификатором {{ param }}",
-            "deleted": "Alarm удален с идентификатором {{ param }}",
+            "created": "Новая запись создана с идентификатором {{ param }}",
+            "updated": "Запись обновлена с идентификатором {{ param }}",
+            "deleted": "Запись удалена с идентификатором {{ param }}",
             "delete": {
-                "question": "Вы уверены что хотите удалить Alarm {{ id }}?"
+                "question": "Вы уверены что хотите удалить запись с {{ id }}?"
             },
             "detail": {
-                "title": "Alarm"
+                "title": "Текущие записи мониторинга:"
             },
             "appl": "Appl",
             "bfunc": "Bfunc",

@@ -4,17 +4,17 @@
         "alarm" : {
             "home": {
                 "title": "Alarms",
-                "createLabel": "Create a new Alarm",
-                "createOrEditLabel": "Create or edit a Alarm"
+                "createLabel": "Add a new alarm record",
+                "createOrEditLabel": "Add or edit a alarm record "
             },
-            "created": "A new Alarm is created with identifier {{ param }}",
-            "updated": "A Alarm is updated with identifier {{ param }}",
-            "deleted": "A Alarm is deleted with identifier {{ param }}",
+            "created": "A new alarm is created with identifier {{ param }}",
+            "updated": "A alarm is updated with identifier {{ param }}",
+            "deleted": "A alarm is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Alarm {{ id }}?"
+                "question": "Are you sure you want to delete alarm {{ id }}?"
             },
             "detail": {
-                "title": "Alarm"
+                "title": " Current alarms: "
             },
             "appl": "Appl",
             "bfunc": "Bfunc",

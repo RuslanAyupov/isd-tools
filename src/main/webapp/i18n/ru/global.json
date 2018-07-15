@@ -1,14 +1,14 @@
 {
     "global": {
-        "title": "ISD Tools",
+        "title": "Инструменты ISD",
         "browsehappy": "Ваш браузер <strong>устарел</strong>. Пожалуйста <a href=\"http://browsehappy.com/?locale=ru\">обновите ваш браузер</a>.",
         "menu": {
             "home": "Главная",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Приложения",
-                "alarm": "Alarm",
-                "isdcalc": "Isdcalc",
+                "alarm": "Управление мониторингом",
+                "isdcalc": "Калькулятор ISD",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

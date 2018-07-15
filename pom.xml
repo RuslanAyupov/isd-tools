@@ -4,7 +4,7 @@
 
     <groupId>com.unicredit.isd</groupId>
     <artifactId>isdtools</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.3</version>
     <packaging>war</packaging>
     <name>ISD Tools</name>
 
