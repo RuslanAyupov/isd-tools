@@ -51,7 +51,7 @@ spring:
         basename: i18n/messages
     mvc:
         favicon:
-            enabled: false
+            enabled: true
     thymeleaf:
         mode: HTML
 
@@ -89,13 +89,13 @@ jhipster:
         from: isdtools@localhost
     swagger:
         default-include-pattern: /api/.*
-        title: isdtools API
-        description: isdtools API documentation
+        title: ISD Tools API
+        description: ISD Tools API documentation
         version: 0.0.1
         terms-of-service-url:
-        contact-name:
-        contact-url:
-        contact-email:
+        contact-name: Ruslan Ayupov
+        contact-url: https://confluence.intranet/api/v2
+        contact-email: ruslan.ayupov@unicredit.ru
         license:
         license-url:
 

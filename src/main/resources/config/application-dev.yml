@@ -22,7 +22,7 @@ logging:
 spring:
     profiles:
         active: dev
-        include: swagger
+        include: swagger,webpack
     devtools:
         restart:
             enabled: true
@@ -37,7 +37,7 @@ spring:
         password:
     h2:
         console:
-            enabled: false
+            enabled: true
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedH2Dialect
         database: H2

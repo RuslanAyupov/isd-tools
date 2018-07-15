@@ -71,6 +71,7 @@ CREATE TABLE ALARM
 	TLG VARCHAR(512),
 	CHGJ VARCHAR(512),
     URL VARCHAR(1024)
+    HPSM_OVVERRIDE(1024)
 );
 ```
 
@@ -84,7 +85,7 @@ select count(*) from "PUBLIC".alarm;
 select chgj, appl, bfunc, email, sms, tlg, url from "PUBLIC".alarm where url is not null;
 
 -- Select pages to deploy
-select chgj, appl, bfunc, email, sms, tlg, url from "PUBLIC".alarmwhere url is null;
+select chgj, appl, bfunc, email, sms, tlg, url from "PUBLIC".alarm where url is null;
 
 -- Update
 UPDATE "public".alarm

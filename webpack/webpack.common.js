@@ -20,7 +20,7 @@ module.exports = (options) => ({
     },
     module: {
         rules: [
-            { test: /bootswatch\/dist\/slate\/js\/umd\//, loader: 'imports-loader?jQuery=jquery' },
+            { test: /bootswatch\/dist\/materia\/js\/umd\//, loader: 'imports-loader?jQuery=jquery' },
             {
                 test: /\.html$/,
                 loader: 'html-loader',

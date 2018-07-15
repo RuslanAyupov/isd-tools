@@ -1,15 +1,33 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="isdtoolsApp.alarm.home.title">Alarms</span>
+        <span jhiTranslate="isdtoolsApp.alarm.home.title">Alarms Management</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-alarm" [routerLink]="['/alarm/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="isdtoolsApp.alarm.home.createLabel">
             Create new Alarm
             </span>
         </button>
+        <button id="jh-sync-entity" style="margin-right: 5px;" class="btn btn-primary float-right jh-sync-entity create-alarm" [routerLink]="['/alarms?url.specified=true']">
+            <fa-icon [icon]="'sync'"></fa-icon>
+            <span  jhiTranslate="isdtoolsApp.alarm.home.syncLabel">
+            Sync Alarms
+            </span>
+        </button>
     </h2>
     <isd-alert></isd-alert>
     <br/>
+    <div class="col-sm-12">
+        <form name="searchForm" class="form-inline">
+            <div class="input-group w-100 mt-3">
+                <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Search alarms by URL">
+                <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                    <span class="fa fa-search">Search</span>
+                </button>
+                <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                    <span class="fa fa-trash-o">Clear</span>
+                </button>
+            </div>
+        </form>
     <div class="table-responsive" *ngIf="alarms">
         <table class="table table-striped">
             <thead>

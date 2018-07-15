@@ -2,8 +2,15 @@
 Bootstrap tweaks
 ===============================================================*/
 
-body,
+body {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
 h1,
+.h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+}
 h2,
 h3,
 h4 {
@@ -12,16 +19,18 @@ h4 {
 
 body {
     background: #e4e5e6;
+    font-size: 0.9em;
+    font-weight: 300;
 }
 
 a {
-    color: white;
+    color: #6b000d;
     font-weight: 200;
 }
 
 a:hover {
-    color: darkred;
-    font-weight: 200;
+    color: #0059a0;
+    text-decoration: none;
 }
 
 /* ==========================================================================
@@ -33,7 +42,6 @@ Browser Upgrade Prompt
     color: #000;
     padding: 0.2em 0;
 }
-
 
 /* ==========================================================================
 Generic styles
@@ -87,10 +95,58 @@ Generic styles
     opacity: 1;
 }
 
-.footer {
-    border-top: 1px solid rgba(0, 0, 0, 0.125);
-    font-weight: 200;
+.alert-info {
+    background-color: #366aab !important;
+    font-size: 1em;
+}
+.alert-warning {
+    font-size: 1em;
+    background-color: #fb99088c;
+    color: #3e3838 !important;
+}
+.alert a:not(.btn),
+.alert .alert-link {
+    color: #000000;
+    font-weight: normal;
+}
+.footer-isd {
+    border-top: unset;
+    font-weight: 400;
+    font-size: 1em;
+    padding-bottom: 10px;
     padding-top: 10px;
+    background: rgb(239, 239, 239);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: white !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+.textarea:not(textarea),
+textarea.form-control:not(textarea),
+input.form-control:not(textarea),
+input[type='text']:not(textarea),
+input[type='password']:not(textarea),
+input[type='email']:not(textarea),
+input[type='number']:not(textarea),
+[type='text'].form-control:not(textarea),
+[type='password'].form-control:not(textarea),
+[type='email'].form-control:not(textarea),
+[type='tel'].form-control:not(textarea),
+[contenteditable].form-control:not(textarea) {
+    height: calc(2.81875rem + 0rem);
+    padding: 5px;
+}
+.isd-formlabel isd-formlabel {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    color: darkblue;
+    font-size: 0.9rem;
+    font-weight: 300;
 }
 
 /* ==========================================================================
@@ -211,6 +267,25 @@ entity detail page css
 /* ==========================================================================
 ui bootstrap tweaks
 ========================================================================== */
+.jh-navbar a.nav-link {
+    font-weight: 400;
+    font-size: 1em;
+    color: white;
+}
+
+#home a:link {
+    color: #a20f29;
+}
+#home a:visited {
+    color: #a20f29;
+}
+#home a:hover {
+    color: #a20f29;
+}
+#home a:active {
+    color: #a20f29;
+}
+
 .nav,
 .pagination,
 .carousel,
@@ -237,8 +312,14 @@ ui bootstrap tweaks
 .modal-header .close {
     padding: 1rem;
     margin: -1rem -1rem -1rem auto;
-    color: white;
+    color: gray;
     text-shadow: unset;
     opacity: unset;
+}
+.close:not(:disabled):not(.disabled):hover,
+.close:not(:disabled):not(.disabled):focus {
+    color: #ef0909;
+    text-decoration: none;
+    opacity: 0.75;
 }
 /* jhipster-needle-css-add-main JHipster will add new css style */

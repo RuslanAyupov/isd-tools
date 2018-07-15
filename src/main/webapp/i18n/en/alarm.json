@@ -3,9 +3,10 @@
     "isdtoolsApp": {
         "alarm" : {
             "home": {
-                "title": "Alarms",
+                "title": "Alarms Management",
                 "createLabel": "Add a new alarm record",
-                "createOrEditLabel": "Add or edit a alarm record "
+                "createOrEditLabel": "Add or edit a alarm record ",
+                "syncLabel": "Syncronize with portal (confluence)"
             },
             "created": "A new alarm is created with identifier {{ param }}",
             "updated": "A alarm is updated with identifier {{ param }}",

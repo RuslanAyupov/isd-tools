@@ -1,0 +1,28 @@
+/*
+ * Copyright (c) 2018.
+ * Author: Ruslan Ayupov <ayupov.ruslan@live.com>
+ */
+h1,
+.h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 1.3em;
+}
+
+.isd401 {
+    display: inline-block;
+    width: 347px;
+    height: 497px;
+    background: url('../../../content/images/401.png') no-repeat center top;
+    background-size: contain;
+}
+.alert-card {
+    margin-bottom: 20%;
+}
