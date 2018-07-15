@@ -1,9 +1,9 @@
 {
   "name": "isdtools",
-  "version": "0.0.0",
-  "description": "Description for isdtools",
+  "version": "0.0.3",
+  "description": "isdtools web app",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "GPL",
   "cacheDirectories": [
     "node_modules"
   ],
