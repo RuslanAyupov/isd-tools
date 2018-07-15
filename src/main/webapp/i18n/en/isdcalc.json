@@ -3,7 +3,7 @@
     "isdtoolsApp": {
         "isdcalc" : {
             "home": {
-                "title": "ISD Calc",
+                "title": "ISD Calculator",
                 "createLabel": "Add new position to catalog",
                 "createOrEditLabel": "Create or edit a catalog"
             },
