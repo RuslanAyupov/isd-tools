@@ -8,6 +8,7 @@
             "entities": {
                 "main": "Приложения",
                 "alarm": "Alarm",
+                "isdcalc": "Isdcalc",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
