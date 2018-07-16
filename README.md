@@ -101,6 +101,14 @@ select version();
 ```
 
 #### Development
+> In developemnt project used this DBMS:
+
+```properties
+url: jdbc:h2:file:./target/h2db/db/isdtools;DB_CLOSE_DELAY=-1
+username: isdtools
+password:
+```
+
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
 

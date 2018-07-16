@@ -27,9 +27,9 @@ spring:
             enabled: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:postgresql://localhost:5432/isdtools
-        username: isdtools
-        password:
+        url: jdbc:postgresql://cl-node02.development-lab.vlan:5432/alarms
+        username: alarmsdba
+        password: passw0rd
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
