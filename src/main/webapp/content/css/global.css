@@ -46,7 +46,7 @@ Browser Upgrade Prompt
 /* ==========================================================================
 Generic styles
 ========================================================================== */
-.display-4 {
+h1 .display-4 {
     font-size: 2.5rem;
 }
 
@@ -118,7 +118,9 @@ Generic styles
     background: rgb(239, 239, 239);
     margin-bottom: 10px;
     margin-top: 10px;
+    border-radius: 0.25rem;
 }
+
 .input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {

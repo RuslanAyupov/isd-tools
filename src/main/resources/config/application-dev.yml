@@ -30,31 +30,15 @@ spring:
             enabled: false # we use Webpack dev server + BrowserSync for livereload
     jackson:
         serialization.indent_output: true
-# TODO Change it after migration
-datasource:
+
+    datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:postgresql://vs1013.imb.ru:5432/isdtool
-        username: dba
-        password: passw0rd
-    jpa:
-        database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
-        database: POSTGRESQL
-        show-sql: false
-        properties:
-            hibernate.id.new_generator_mappings: true
-            hibernate.cache.use_second_level_cache: false
-            hibernate.cache.use_query_cache: false
-            hibernate.generate_statistics: false
-
-
-#    datasource:
-#        type: com.zaxxer.hikari.HikariDataSource
-#        url: jdbc:h2:file:./target/h2db/db/isdtools;DB_CLOSE_DELAY=-1
-#        username: isdtools
-#        password:
-#    h2:
-#        console:
-#            enabled: true
+        url: jdbc:h2:file:./target/h2db/db/isdtools;DB_CLOSE_DELAY=-1
+        username: isdtools
+        password:
+    h2:
+       console:
+       enabled: true
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedH2Dialect
         database: H2
@@ -118,7 +102,7 @@ jhipster:
             # security key (this key should be unique for your application, and kept secret)
             key: b80cbb41d3f921b89ca5231d103e0af79b2fb49c
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: isdtools@localhost
+        from: info-isd@rayupov.ru
         base-url: http://127.0.0.1:8080
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx:

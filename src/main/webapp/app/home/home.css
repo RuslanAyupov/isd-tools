@@ -3,11 +3,16 @@ Main page styles
 ========================================================================== */
 
 .isd {
-    display: inline-block;
-    width: 347px;
-    height: 497px;
+    display: block;
+    width: 250px;
+    height: 200px;
     background: url('../../content/images/tools.png') no-repeat center top;
     background-size: contain;
+}
+.display-isd {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
