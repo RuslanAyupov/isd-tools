@@ -51,7 +51,7 @@ ALTER DATABASE alarms SET search_path TO public;
 ALTER ROLE alarmsdba SET search_path TO public;
 
 -- Table prepare
-CREATE TABLE ALARM
+create table if not exists alarm
 (
     id serial primary key,
     SITNAME VARCHAR(1024) not null,
@@ -73,6 +73,11 @@ CREATE TABLE ALARM
     URL VARCHAR(1024),
     HPSM_OVVERRIDE(1024)
 );
+
+--- Create index
+create index alarm_id_index
+  on alarm (id);
+  
 ```
 
 + Filter queries:

@@ -7,13 +7,13 @@
         },
         "question": "Если у Вас возникли вопросы по JHipster:",
         "link": {
-            "homepage": "JHipster домашняя страница",
-            "stackoverflow": "JHipster на Stack Overflow",
-            "bugtracker": "JHipster баг трекер",
-            "chat": "JHipster public chat room",
-            "follow": "пользователь @java_hipster в Twitter"
+            "homepage": "ICT / CSI / ISD веб инструменты",
+            "stackoverflow": "Управление Алармами",
+            "bugtracker": "Инфраструктурный Калькулятор",
+            "chat": "Описание API",
+            "follow": "Портал мониторинга"
         },
-        "like": "Если вам нравится JHipster, не забудьте дать нам звёздочку на",
+        "like": "Если вам нравится не забудьте дать нам звёздочку на",
         "github": "GitHub"
     }
 }
