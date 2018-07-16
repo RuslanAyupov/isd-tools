@@ -40,7 +40,7 @@ ALTER ROLE alarmsdba CREATEDB;
 
 -- Database
 CREATE DATABASE alarms;
-GRANT ALL PRIVILEGES ON DATABASE alarms TO alarmsdba
+GRANT ALL PRIVILEGES ON DATABASE alarms TO alarmsdba;
 ```
 
 + Create Tables and Set default scheme
@@ -70,7 +70,7 @@ CREATE TABLE ALARM
 	FTLG VARCHAR(512),
 	TLG VARCHAR(512),
 	CHGJ VARCHAR(512),
-    URL VARCHAR(1024)
+    URL VARCHAR(1024),
     HPSM_OVVERRIDE(1024)
 );
 ```
