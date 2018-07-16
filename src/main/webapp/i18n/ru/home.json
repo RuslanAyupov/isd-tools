@@ -1,11 +1,11 @@
 {
     "home": {
-        "title": "Добро пожаловать, Java Hipster!",
-        "subtitle": "Это ваша домашняя страница",
+        "title": "ICT / CSI / ISD Tools",
+        "subtitle": "всякая херня тут...",
         "logged": {
             "message": "Вы вошли как пользователь \"{{username}}\"."
         },
-        "question": "Если у Вас возникли вопросы по JHipster:",
+        "question": "Если у Вас возникли вопросы....",
         "link": {
             "homepage": "ICT / CSI / ISD веб инструменты",
             "stackoverflow": "Управление Алармами",

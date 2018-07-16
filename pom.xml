@@ -460,9 +460,10 @@
                     <verbose>true</verbose>
                     -->
                     <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://cl-node02.development-lab.vlan:5432/alarms</url>
+                    <!-- <url>jdbc:postgresql://cl-node02.development-lab.vlan:5432/alarms</url> -->
+                    <url>jdbc:postgresql://vs1013:5432/isdtool</url>
                     <defaultSchemaName>public</defaultSchemaName>
-                    <username>alarmsdba</username>
+                    <username>dba</username>
                     <password>passw0rd</password>
                     <referenceUrl>
                         hibernate:spring:com.unicredit.alarms.domain?dialect=org.hibernate.dialect.PostgreSQL82Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy

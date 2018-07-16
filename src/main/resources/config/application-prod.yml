@@ -27,8 +27,8 @@ spring:
             enabled: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:postgresql://cl-node02.development-lab.vlan:5432/alarms
-        username: alarmsdba
+        url: jdbc:postgresql://vs1013.imb.ru:5432/isdtool
+        username: dba
         password: passw0rd
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
@@ -42,10 +42,14 @@ spring:
     liquibase:
         contexts: prod
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: smtp.yandex.ru
+        port: 465
+        username: info@rayupov.ru
+        password: P@ssw0rd
+        protocol: smtp
+        tls: true
+        starttls.enable: true
+        ssl.trust: smtp.yandex.ru
     thymeleaf:
         cache: true
 
