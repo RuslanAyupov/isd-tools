@@ -16,12 +16,95 @@ CREATE TABLE "alarm" (
   SMS varchar(100) default NULL,
   FMAIL varchar(255) default NULL,
   FSMS varchar(255),
+
+
   SITTYPE varchar(13) default NULL,
   FTLG varchar(100) default NULL,
   TLG varchar(100) default NULL,
   CHGJ varchar(255),
   URL TEXT NULL,
   hpsm_override TEXT NULL
+
+
+-- Create Database Lock Table
+CREATE TABLE public.databasechangeloglock (ID INT NOT NULL, LOCKED BOOLEAN NOT NULL, LOCKGRANTED TIMESTAMP WITHOUT TIME ZONE, LOCKEDBY VARCHAR(255), CONSTRAINT PK_DATABASECHANGELOGLOCK PRIMARY KEY (ID));
+
+-- Initialize Database Lock Table
+DELETE FROM public.databasechangeloglock;
+
+INSERT INTO public.databasechangeloglock (ID, LOCKED) VALUES (1, FALSE);
+
+-- Lock Database
+UPDATE public.databasechangeloglock SET LOCKED = TRUE, LOCKEDBY = 'PC30029 (10.164.250.198)', LOCKGRANTED = '2018-07-18 20:56:36.737' WHERE ID = 1 AND LOCKED = FALSE;
+
+-- Create Database Change Log Table
+CREATE TABLE public.databasechangelog (ID VARCHAR(255) NOT NULL, AUTHOR VARCHAR(255) NOT NULL, FILENAME VARCHAR(255) NOT NULL, DATEEXECUTED TIMESTAMP WITHOUT TIME ZONE NOT NULL, ORDEREXECUTED INT NOT NULL, EXECTYPE VARCHAR(10) NOT NULL, MD5SUM VARCHAR(35), DESCRIPTION VARCHAR(255), COMMENTS VARCHAR(255), TAG VARCHAR(255), LIQUIBASE VARCHAR(20), CONTEXTS VARCHAR(255), LABELS VARCHAR(255), DEPLOYMENT_ID VARCHAR(10));
+
+-- Changeset config/liquibase/changelog/00000000000000_initial_schema.xml::00000000000000::Ruslan Ayupov
+CREATE SEQUENCE public.hibernate_sequence START WITH 1000 INCREMENT BY 50;
+
+INSERT INTO public.databasechangelog (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('00000000000000', 'Ruslan Ayupov', 'config/liquibase/changelog/00000000000000_initial_schema.xml', NOW(), 1, '7:a6235f40597a13436aa36c6d61db2269', 'createSequence sequenceName=hibernate_sequence', '', 'EXECUTED', NULL, NULL, '3.5.4', '1936597299');
+
+-- Changeset config/liquibase/changelog/00000000000000_initial_schema.xml::00000000000001::Ruslan Ayupov
+CREATE TABLE public.isd_user (id BIGINT NOT NULL, login VARCHAR(50) NOT NULL, password_hash VARCHAR(60), first_name VARCHAR(50), last_name VARCHAR(50), email VARCHAR(254), image_url VARCHAR(256), activated BOOLEAN NOT NULL, lang_key VARCHAR(6), activation_key VARCHAR(20), reset_key VARCHAR(20), created_by VARCHAR(50) NOT NULL, created_date TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW() NOT NULL, reset_date TIMESTAMP WITHOUT TIME ZONE, last_modified_by VARCHAR(50), last_modified_date TIMESTAMP WITHOUT TIME ZONE, CONSTRAINT PK_ISD_USER PRIMARY KEY (id), CONSTRAINT ux_user_email UNIQUE (email), CONSTRAINT ux_user_login UNIQUE (login));
+
+CREATE TABLE public.isd_authority (name VARCHAR(50) NOT NULL, CONSTRAINT PK_ISD_AUTHORITY PRIMARY KEY (name));
+
+CREATE TABLE public.isd_user_authority (user_id BIGINT NOT NULL, authority_name VARCHAR(50) NOT NULL);
+
+ALTER TABLE public.isd_user_authority ADD PRIMARY KEY (user_id, authority_name);
+
+CREATE TABLE public.isd_persistent_token (series VARCHAR(20) NOT NULL, user_id BIGINT, token_value VARCHAR(20) NOT NULL, token_date date, ip_address VARCHAR(39), user_agent VARCHAR(255), CONSTRAINT PK_ISD_PERSISTENT_TOKEN PRIMARY KEY (series));
+
+ALTER TABLE public.isd_user_authority ADD CONSTRAINT fk_authority_name FOREIGN KEY (authority_name) REFERENCES public.isd_authority (name);
+
+ALTER TABLE public.isd_user_authority ADD CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES public.isd_user (id);
+
+ALTER TABLE public.isd_user ALTER COLUMN  password_hash SET NOT NULL;
+
+ALTER TABLE public.isd_persistent_token ADD CONSTRAINT fk_user_persistent_token FOREIGN KEY (user_id) REFERENCES public.isd_user (id);
+
+-- WARNING The following SQL may change each run and therefore is possibly incorrect and/or invalid:
+INSERT INTO public.isd_user (id, login, password_hash, first_name, last_name, email, image_url, activated, lang_key, created_by, last_modified_by) VALUES ('1', 'system', '$2a$10$mE.qmcV0mFU5NcKh73TZx.z4ueI/.bDWbj0T1BYyqP481kGGarKLG', 'System', 'System', 'system@localhost', '', TRUE, 'en', 'system', 'system'),('2', 'anonymoususer', '$2a$10$j8S5d7Sr7.8VTOYNviDPOeWX8KcYILUVJBsYV83Y5NtECayypx9lO', 'Anonymous', 'User', 'anonymous@localhost', '', TRUE, 'en', 'system', 'system'),('3', 'admin', '$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC', 'Administrator', 'Administrator', 'admin@localhost', '', TRUE, 'en', 'system', 'system'),('4', 'user', '$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K', 'User', 'User', 'user@localhost', '', TRUE, 'en', 'system', 'system'),('5', 'ruslan.ayupov', '$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC', 'Administrator', 'Administrator', 'ruslan.ayupov@unicredit', '', TRUE, 'en', 'system', 'system');
+
+ALTER TABLE public.isd_user ALTER COLUMN  created_date SET DEFAULT NULL;
+
+-- WARNING The following SQL may change each run and therefore is possibly incorrect and/or invalid:
+INSERT INTO public.isd_authority (name) VALUES ('ROLE_ADMIN'),('ROLE_USER');
+
+-- WARNING The following SQL may change each run and therefore is possibly incorrect and/or invalid:
+INSERT INTO public.isd_user_authority (user_id, authority_name) VALUES ('1', 'ROLE_ADMIN'),('1', 'ROLE_USER'),('3', 'ROLE_ADMIN'),('3', 'ROLE_USER'),('4', 'ROLE_USER');
+
+CREATE TABLE public.isd_persistent_audit_event (event_id BIGINT NOT NULL, principal VARCHAR(50) NOT NULL, event_date TIMESTAMP WITHOUT TIME ZONE, event_type VARCHAR(255), CONSTRAINT PK_ISD_PERSISTENT_AUDIT_EVENT PRIMARY KEY (event_id));
+
+CREATE TABLE public.isd_persistent_audit_evt_data (event_id BIGINT NOT NULL, name VARCHAR(150) NOT NULL, value VARCHAR(255));
+
+ALTER TABLE public.isd_persistent_audit_evt_data ADD PRIMARY KEY (event_id, name);
+
+CREATE INDEX idx_persistent_audit_event ON public.isd_persistent_audit_event(principal, event_date);
+
+CREATE INDEX idx_persistent_audit_evt_data ON public.isd_persistent_audit_evt_data(event_id);
+
+ALTER TABLE public.isd_persistent_audit_evt_data ADD CONSTRAINT fk_evt_pers_audit_evt_data FOREIGN KEY (event_id) REFERENCES public.isd_persistent_audit_event (event_id);
+
+INSERT INTO public.databasechangelog (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('00000000000001', 'Ruslan Ayupov', 'config/liquibase/changelog/00000000000000_initial_schema.xml', NOW(), 2, '7:a9485c198147ec935974cedde1739372', 'createTable tableName=isd_user; createTable tableName=isd_authority; createTable tableName=isd_user_authority; addPrimaryKey tableName=isd_user_authority; createTable tableName=isd_persistent_token; addForeignKeyConstraint baseTableName=isd_user_a...', '', 'EXECUTED', NULL, NULL, '3.5.4', '1936597299');
+
+-- Changeset config/liquibase/changelog/20180710232551_added_entity_Alarm.xml::20180710232551-1::jhipster
+CREATE TABLE public.alarm (id BIGINT NOT NULL, appl VARCHAR(255) NOT NULL, bfunc VARCHAR(255), chgj VARCHAR(255), ci VARCHAR(255), isd_desc VARCHAR(255), email VARCHAR(255), fmail VARCHAR(255), fsms VARCHAR(255), ftlg VARCHAR(255), hpsm VARCHAR(255), infrastructure VARCHAR(255), messtext VARCHAR(255), sitname VARCHAR(255), sittype VARCHAR(255), sms VARCHAR(255), tlg VARCHAR(255), url VARCHAR(255) NOT NULL, hpsm_override VARCHAR(255), CONSTRAINT PK_ALARM PRIMARY KEY (id));
+
+INSERT INTO public.databasechangelog (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('20180710232551-1', 'jhipster', 'config/liquibase/changelog/20180710232551_added_entity_Alarm.xml', NOW(), 3, '7:60cfa45142c6407e8b16e0ad44ee5d12', 'createTable tableName=alarm', '', 'EXECUTED', NULL, NULL, '3.5.4', '1936597299');
+
+-- Changeset config/liquibase/changelog/20180714192731_added_entity_Isdcalc.xml::20180714192731-1::jhipster
+CREATE TABLE public.isdcalc (id BIGINT NOT NULL, CONSTRAINT PK_ISDCALC PRIMARY KEY (id));
+
+INSERT INTO public.databasechangelog (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('20180714192731-1', 'jhipster', 'config/liquibase/changelog/20180714192731_added_entity_Isdcalc.xml', NOW(), 4, '7:c1862e86745dad2f0589ca1d7c6d4af5', 'createTable tableName=isdcalc', '', 'EXECUTED', NULL, NULL, '3.5.4', '1936597299');
+
+-- Release Database Lock
+UPDATE public.databasechangeloglock SET LOCKED = FALSE, LOCKEDBY = NULL, LOCKGRANTED = NULL WHERE ID = 1;
+
+
+
+
 );
 */
 

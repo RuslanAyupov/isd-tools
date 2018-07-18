@@ -35,20 +35,21 @@ Web Application with usefull tools set, such as :
 
 ```sql
 -- Users
-CREATE ROLE alarmsdba WITH LOGIN PASSWORD 'passw0rd';
-ALTER ROLE alarmsdba CREATEDB;
+CREATE ROLE "isd-dba" WITH LOGIN PASSWORD 'passw0rd';
+ALTER ROLE "isd-dba" CREATEDB;
 
 -- Database
-CREATE DATABASE alarms;
-GRANT ALL PRIVILEGES ON DATABASE alarms TO alarmsdba;
+CREATE DATABASE isdtools;
+GRANT ALL PRIVILEGES ON DATABASE isdtools TO "isd-dba";
+
+-- Grant Permissions
+ALTER DATABASE isdtools SET search_path TO public;
+ALTER ROLE "isd-dba" SET search_path TO public;
 ```
 
-+ Create Tables and Set default scheme
++ Create tables
 
 ```sql
--- Grant Permissions
-ALTER DATABASE alarms SET search_path TO public;
-ALTER ROLE alarmsdba SET search_path TO public;
 
 -- Table prepare
 create table if not exists alarm
