@@ -91,7 +91,7 @@ jhipster:
         default-include-pattern: /api/.*
         title: ISD Tools API
         description: ISD Tools API documentation
-        version: 0.0.1
+        version: 0.0.3
         terms-of-service-url:
         contact-name: Ruslan Ayupov
         contact-url: https://confluence.intranet/api/v2

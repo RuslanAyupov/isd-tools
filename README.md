@@ -6,8 +6,15 @@ Web Application with usefull tools set, such as :
 
 ###### Alarms Management:
 > This application developed for manage Tivoli alarms triggers and syncronize they with Confluence wiki.
-> 
-> https://confluence.intranet/
+
+Used environment:
+
+| Environment   | Links         | Version | 
+| ------------- |:------------- | ------- | 
+|PRODUCTION| https://confluence.intranet/| 6.4.3 |
+|DEVELOPMENT| https://wiki.it-sandbox.xyz/| 6.0.1 |
+
+
 
 #### Changelog:
 
@@ -21,6 +28,12 @@ Web Application with usefull tools set, such as :
     - added universal entity generation;
     - added alarms management entity and UI;
     - trying refactoring UI with clarity;      
+- v0.0.4 (wip)
+    - injected angular form for ISD CALC application;
+    - small improvements on;
+    - added confluence api client;
+    - TBD (work in progress)
+    - TBD (work in progress)
 
 #### Pre-requirements
 
@@ -115,7 +128,76 @@ username: isdtools
 password:
 ```
 
+###### ConfluenceRESTClient Notes
 
+A Java client for interacting with the Confluence REST API.
+
+Example Usage:
+
+```java
+String url = "http://confluence.organisation.org";
+String username = "Jono";
+String password = "aPa$$w0rd";
+ 
+ConfluenceClient client = ConfluenceClient.builder()
+    .baseURL(url)
+    .username(username)
+    .password(password)
+    .build();
+
+// generate some report content to be presented on confluence.
+String content = generateReport();
+
+// configure page
+Content page = new Content();
+page.setType(Type.Page);
+page.setSpace( new Space("DEV"));
+page.setTitle("A page in DEV");                                      
+page.setBody(new Body(new Storage(Storage.Representation.STORAGE, content)));
+
+// post page to confluence.
+client.postContent(page);
+
+// search confluence instance by space key and title
+// Note: this will contain our page from above
+ContentResultList search 
+        = confluenceClient.getContentBySpaceKeyAndTitle(
+                "DEV", "A page in DEV");
+```    
+
+In Confluence API used next `storage format`: 
+
+```html
+<table class="relative-table wrapped" style="width: 54.7581%;"><colgroup><col style="width: 32.8666%;" /><col style="width: 67.1334%;" /></colgroup>
+<tbody>
+<tr>
+<td><strong>Значение Аларма в терминах бизнеса / поддержки</strong></td>
+<td>Текст (заполняется вручную службой поддержки)</td></tr>
+<tr>
+<td colspan="1"><strong>Основание для реализации проверки / краткое значение</strong></td>
+<td colspan="1">16.03.2017 Evgrashin. SWIFT Message Partner Closed (значение поля CHGJ)</td></tr>
+<tr>
+<td><strong>На какую систему влияет</strong></td>
+<td>SWIFT (значение поля APPL)</td></tr>
+<tr>
+<td><strong>На какой бизнес Сервис/Процесс влияет</strong></td>
+<td>SWIFT communication (значение поля BFUNC)</td></tr>
+<tr>
+<td colspan="1"><strong>Рассылка по</strong> Email</td>
+<td colspan="1"><a href="mailto:ASO_SWIFT@unicredit.ru">ASO_SWIFT@unicredit.ru</a> (значение поля EMAIL)</td></tr>
+<tr>
+<td colspan="1"><strong>Рассылка по</strong> SMS</td>
+<td colspan="1">79636554090 (значение поля SMS)</td></tr>
+<tr>
+<td colspan="1"><strong>Рассылка по</strong> Telegram</td>
+<td colspan="1">ASO_SWIFT (значение поля TLG)</td></tr>
+<tr>
+<td colspan="1"><strong>Действия при возникновении Аларма</strong></td>
+<td colspan="1">Текст (заполняется вручную службой поддержки)</td></tr></tbody></table>
+```
+
+
+###### Core Application notes
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
 
@@ -183,11 +265,13 @@ For further instructions on how to develop with JHipster, have a look at [Using 
 ```
 Then implements the generated delegate classes with `@Service` classes.
 
-To edit the `api.yml` definition file, you can use a tool such as [Swagger-Editor](). Start a local instance of the swagger-editor using docker by running: `docker-compose -f src/main/docker/swagger-editor.yml up -d`. The editor will then be reachable at [http://localhost:7742](http://localhost:7742).
+To edit the `api.yml` definition file, you can use a tool such as [Swagger-Editor](). Start a local instance of the swagger-editor using docker by running: `docker-compose -f src/main/docker/swagger-editor.yml up -d`. The editor will then be reachable at [http://<hostname>:7742](http://<hostname>:7742).
 
 Refer to [Doing API-First development][] for more details.
 
-#### Building for production
+---
+
+### Building for production
 
 To optimize the AlarmsWebApp application for production, run:
 
@@ -216,4 +300,4 @@ Unit tests are run by [Jest][] and written with [Jasmine][]. They're located in 
 
 #### Continuous Integration (optional)
 
-To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
+> TBD
